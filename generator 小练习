@@ -1,0 +1,6 @@
+'use strict';
+function* next_id() {
+  var current_id=0;
+  for(vari=0;i<100;i++){
+  yield ++current_id;
+}
