@@ -1,6 +1,29 @@
+//generator由function*定义,可以用yield返回多次。
+注意：调用generator和调用一般函数不一样， 仅仅next_id()的话，只是创建了该对象，若果要调用的话，需要next_id().next(),
+next()方法会执行generator的代码，然后，每次遇到yield ;就返回一个对象{value: .., done: true/false};value为yield的返回值；
+yield有点像游戏里的存档，如果再一次调用next()，将从上个存点开始，执行一次代码。
 'use strict';
 function* next_id() {
+
   var current_id=0;
+  
   for(vari=0;i<100;i++){
+  
   yield ++current_id;
+}
+
+// 测试:
+var
+    x,
+    pass = true,
+    g = next_id();
+for (x = 1; x < 100; x ++) {
+    if (g.next().value !== x) {
+        pass = false;
+        alert('测试失败!');
+        break;
+    }
+}
+if (pass) {
+    alert('测试通过!');
 }
