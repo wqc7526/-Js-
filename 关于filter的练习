@@ -1,0 +1,29 @@
+// filter方法也是运用于数组，用传入的函数作为规则，以返回值true判定是保留元素，以返回值false判定是丢弃元素。
+'use strict';
+
+function get_primes(arr) {
+    return arr.filter(function(n){
+    if (n <= 3) { return n > 1; }
+    if (n % 2 == 0 || n % 3 == 0) { return false; }
+  
+    for (var  i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) { return false; }
+    }
+    return true;
+   }
+)
+
+// 测试:
+var
+    x,
+    r,
+    arr = [];
+for (x = 1; x < 100; x++) {
+    arr.push(x);
+}
+r = get_primes(arr);
+if (r.toString() === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97].toString()) {
+    alert('测试通过!');
+} else {
+    alert('测试失败: ' + r.toString());
+}
