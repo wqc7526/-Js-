@@ -1,0 +1,9 @@
+//sort是用于数组的排序方法，和map()，reduce()一样也可以传入函数参数作为规则,根据其返回值的正负进行排序
+注意：这个方法与map，reduce，filter方法不同的是会改变原数组。
+var a1 = [6,3,5,9,0];
+var a2 = a1.sort(function(a,b){
+	return a-b;
+});
+alert(a1) // [0,3,5,6,9]
+alert(a2) // [0,3,5,6,9]
+alert(a1 === a2); // true, a1和a2是同一对象
