@@ -1,8 +1,10 @@
+//reduce（）与map（）一样，是Array的方法，（）内传入的是参数，可以是函数也可以是 Number这类，不过这个方法不改变原数组。
+
 'use strict';
 
 function string2int(s) {
 
-var arr = s.split('');
+var arr = s.split(''); //下面的reduce方法不会覆盖原数组
 
 if(arr.length==1){
 	return (+arr[0]);
