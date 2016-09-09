@@ -1,0 +1,19 @@
+function test(resolve, reject) {                  //这里的resolve，reject两个参数必须有，但是名字可以改
+    var timeOut = Math.random() * 2;
+    console.log('set timeout to: ' + timeOut + ' seconds.');
+    setTimeout(function () {
+        if (timeOut < 1) {
+             console.log('call resolve()...');
+            resolve('200 OK');                      //猜测Promise.then()为接受resolve参数
+        }
+        else {
+             console.log('call reject()...');
+            reject('timeout in ' + timeOut + ' seconds.');  //猜测Promise.catch()为接受reject参数
+        }
+    }, 1001);
+}
+new Promise(test).then(function (result) {  //创建new Promise(此对象函数为立即执行的)
+    console.log('成功：' + result);
+}).catch(function (reason) {
+    console.log('失败：' + reason);
+});
