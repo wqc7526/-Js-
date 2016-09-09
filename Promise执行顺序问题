@@ -1,0 +1,31 @@
+var p1 = new Promise(function (resolve, reject) {
+    log('start new Promise...');
+    resolve('200 ok');
+
+});
+
+log('hello1!');
+
+var p2 = p1.then(function (r) {
+    log('Done: ' + r);
+});
+
+log('hello2!');
+
+p2.catch(function (reason) {
+    log('Failed: ' + reason);
+});
+
+log('hello3!');
+
+
+//输出为：
+start new Promise... //此条为立即执行，符合前面Promise用法
+
+hello1!
+
+hello2!
+
+hello3!
+
+Done: 200 ok      //此条在第7,13,19行代码完成后才跳出，猜测为只有执行(此执行是解析完代码)完代码后，才开始执行 .then和.catch两个方法
