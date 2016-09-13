@@ -1,0 +1,18 @@
+//垃圾回收机制：找出不需要的变量，然后是放其内存。
+//一般有两种方式：标记清除（主流）；引用计数。
+//为了确保用最少内存获取页面性能，引用高程三的例子
+function person(){
+    var student = new Object();
+    student.name  = name;
+    return student;
+}
+
+var xiaoming = person(xiaoming);
+
+//xiaoming dosomething
+
+xiaoming = null; //解除引用
+
+//解除一个值的引用并不意味着自动回收该内存，而是让值脱离执行环境，以便垃圾机制下一次运行回收
+
+//感觉在在局部函数块里并不需要解除引用，倒是在全局执行环境内，用这个来解除不用的变量来释放内存
