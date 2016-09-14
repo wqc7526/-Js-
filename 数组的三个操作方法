@@ -1,0 +1,38 @@
+总结：1.concat为数组的合并，添加，相比push的更方便
+      2.slice为取数组中的一部分，不过要注意细节splice(0,2)，实际为0位到1位
+      3.splice方法，是数组的增删改的操作，注意只有在删除时，才有返回值，且返回值 为删除的值
+      4.前两种方法不改变原数组，第三种会改变原数组。
+第一种concat()方法，常见的数组合并方法
+var test = ["a","b","c"];
+var test1 = test.concat();
+var test2 = test.concat([1,2],["d","e"])
+test1.push("d");
+console.log(test);  //["a", "b", "c"]  原来的test没有改变
+console.log(test1); //["a", "b", "c", "d"]   concat方法是基于原数组的新数组，不会影响原数组
+console.log(test2); //["a", "b", "c", 1, 2, "d", "e"]   concat 会将传入的数组元素合并到新数组中
+
+
+第二种slice()方法
+var test = ["a","b","c"];
+
+console.log(test.slice(1));  //["b", "c"] 方法特性为从1位开始知道数组最后一位
+console.log(test.slice(0,2));  //["a", "b"]  方法特性从0位到1位，注意虽然传入参数为2，但输出时到1位结束
+console.log(test.slice(-2,-1)); //["b"]  方法特性，遇到负数，用加上数组长度的方法，转化为test.slice(1,2)
+console.log(test); //["a", "b", "c"]   与concat方法一样不改变原数组
+
+第三种splice()方法
+
+var test = ["a","b","c"];
+
+var remove = test.splice(0,1);  
+console.log(test);    //["b", "c"]  删除第一项
+console.log(remove);  //["a"]   remove为删除的第一项的值
+
+remove = test.splice(1,0,"aa");
+console.log(test);    //["b", "aa", "c"]  增加了aa
+console.log(remove);   //  []   ,可以知道，splice方法在删除时才有返回值
+
+remove =test.splice(1,1,"d","e")
+console.log(test);   //["b", "d", "e", "c"]  替换aa，增加了d,e两项
+console.log(remove);  //["aa"]   删除的返回值
+
